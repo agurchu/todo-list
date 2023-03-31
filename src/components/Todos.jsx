@@ -1,10 +1,16 @@
 import React from "react";
+import TodoItem from "./TodoItem";
+import PropTypes from "prop-types";
 
-function Todos({ todos }) {
+function Todos({ todos, markComplete }) {
+  Todos.propTypes = {
+    todos: PropTypes.array.isRequired,
+  };
+
   return (
     <>
       {todos.map((todo) => (
-        <h1 key={todo.id}>{todo.title}</h1>
+        <TodoItem key={todo.id} todo={todo} markComplete={markComplete} />
       ))}
     </>
   );
