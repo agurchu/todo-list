@@ -11,6 +11,8 @@ function TodoItem({ todo, markComplete, onDelete }) {
     return { textDecoration: todo.completed ? "line-through" : "none" };
   };
 
+  /* ======================= Return ========================*/
+
   return (
     <Wrap style={getStyle()}>
       <Content>
@@ -23,6 +25,10 @@ function TodoItem({ todo, markComplete, onDelete }) {
 }
 
 export default TodoItem;
+
+/* ========================================
+                    Styling 
+   ========================================*/
 
 const Wrap = styled.div`
   background: #103e31;

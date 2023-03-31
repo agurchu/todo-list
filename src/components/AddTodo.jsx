@@ -1,10 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
-function AddTodo() {
+function AddTodo({ addTodo }) {
+  const [addTitle, setAddTitle] = useState("");
+
+  // submit todo
+  const onSubmit = (e) => {
+    e.preventDefault();
+    addTodo(addTitle);
+    setAddTitle("");
+  };
+
+  /* ======================= Return ========================*/
   return (
-    <AddForm>
-      <Input type="text" name="title" placeholder="Add Todo..." />
+    <AddForm onSubmit={onSubmit}>
+      <Input
+        value={addTitle}
+        onChange={(e) => setAddTitle(e.target.value)}
+        type="text"
+        name="title"
+        required
+        placeholder="Add Todo..."
+      />
       <SubmitBtn type="submit" value="Submit" />
     </AddForm>
   );
@@ -12,9 +29,15 @@ function AddTodo() {
 
 export default AddTodo;
 
+/* ========================================
+                    Styling 
+   ======================================== */
+
 const AddForm = styled.form`
   display: flex;
   width: calc(100% - 100px);
+  max-width: 500px;
+  height: 50px;
   border-radius: 8px;
   margin-bottom: 20px;
   border: 2px solid #2c9476;

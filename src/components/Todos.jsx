@@ -8,6 +8,8 @@ function Todos({ todos, markComplete, onDelete }) {
     todos: PropTypes.array.isRequired,
   };
 
+  /* ======================= Return ========================*/
+
   return (
     <Container>
       {todos.map((todo) => (
@@ -23,6 +25,10 @@ function Todos({ todos, markComplete, onDelete }) {
 }
 
 export default Todos;
+
+/* ========================================
+                    Styling 
+   ========================================*/
 
 const Container = styled.div`
   width: calc(100% - 100px);

@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 function Header() {
+  /* ======================= Return ========================*/
   return (
     <HeaderTodo>
       <h1>Todo List</h1>
@@ -10,6 +11,10 @@ function Header() {
 }
 
 export default Header;
+
+/* ========================================
+                    Styling 
+   ========================================*/
 
 const HeaderTodo = styled.header`
   background: #1a2b26;
