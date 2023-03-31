@@ -27,5 +27,9 @@ export default Todos;
 const Container = styled.div`
   width: calc(100% - 100px);
   max-width: 1012px;
+  background: #2c9476;
+  box-shadow: 0 2px 7px rgba(0, 0, 0, 0.3);
+  padding: 20px 40px;
+  border-radius: 8px;
   margin: 0 auto;
 `;

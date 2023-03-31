@@ -2,6 +2,8 @@ import "./App.css";
 import React, { useState } from "react";
 import Todos from "./components/Todos";
 import styled from "styled-components";
+import Header from "./components/layout/Header";
+import AddTodo from "./components/AddTodo";
 
 function App() {
   const [items, setItems] = useState([
@@ -27,6 +29,8 @@ function App() {
 
   return (
     <Container className="App">
+      <Header />
+      <AddTodo />
       <Todos todos={items} markComplete={markComplete} onDelete={onDelete} />
     </Container>
   );
@@ -36,6 +40,7 @@ export default App;
 
 const Container = styled.div`
   display: flex;
+  flex-direction: column;
   height: 100vh;
   width: 100%;
   align-items: center;
