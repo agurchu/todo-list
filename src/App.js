@@ -1,18 +1,21 @@
 import "./App.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Todos from "./components/Todos";
 import styled from "styled-components";
 import Header from "./components/layout/Header";
 import AddTodo from "./components/AddTodo";
 import About from "./components/pages/About";
+import axios from "axios";
 
 function App() {
-  const [items, setItems] = useState([
-    { id: 1, title: "Take out the trash", completed: false },
-    { id: 2, title: "Dinner with wife", completed: false },
-    { id: 3, title: "Meeting with boss", completed: false },
-  ]);
+  const [items, setItems] = useState([]);
+  useEffect(() => {
+    axios
+      .get("https://jsonplaceholder.typicode.com/todos?_limit=10")
+      .then((res) => setItems(res.data))
+      .catch((error) => console.log(error));
+  });
 
   const markComplete = (id) => {
     setItems(
@@ -32,17 +35,25 @@ function App() {
   const [maxId, setMaxId] = useState(3);
   // Add Todo
   const addTodo = (title) => {
-    const newTodo = {
-      id: maxId + 1,
-      title,
-      completed: false,
-    };
-    if (title === "") {
-      return;
-    }
-    setItems([...items, newTodo]);
-    setMaxId(maxId + 1);
-    console.log(newTodo);
+    // const newTodo = {
+    //   id: maxId + 1,
+    //   title,
+    //   completed: false,
+    // };
+    axios
+      .post("https://jsonplaceholder.typicode.com/todos", {
+        title,
+        completed: false,
+      })
+      .then((res) => {
+        if (title === "") {
+          return;
+        }
+        setItems([...items, res.data]);
+      });
+
+    // setItems([...items, newTodo]);
+    // setMaxId(maxId + 1);
   };
   /* ======================= Return ========================*/
   return (
