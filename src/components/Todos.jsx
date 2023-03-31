@@ -3,7 +3,7 @@ import TodoItem from "./TodoItem";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 
-function Todos({ todos, markComplete }) {
+function Todos({ todos, markComplete, onDelete }) {
   Todos.propTypes = {
     todos: PropTypes.array.isRequired,
   };
@@ -11,7 +11,12 @@ function Todos({ todos, markComplete }) {
   return (
     <Container>
       {todos.map((todo) => (
-        <TodoItem key={todo.id} todo={todo} markComplete={markComplete} />
+        <TodoItem
+          key={todo.id}
+          todo={todo}
+          markComplete={markComplete}
+          onDelete={onDelete}
+        />
       ))}
     </Container>
   );

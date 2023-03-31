@@ -21,9 +21,13 @@ function App() {
     );
   };
 
+  const onDelete = (id) => {
+    setItems(items.filter((item) => item.id !== id));
+  };
+
   return (
     <Container className="App">
-      <Todos todos={items} markComplete={markComplete} />
+      <Todos todos={items} markComplete={markComplete} onDelete={onDelete} />
     </Container>
   );
 }
