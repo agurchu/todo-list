@@ -1,6 +1,7 @@
 import "./App.css";
 import React, { useState } from "react";
 import Todos from "./components/Todos";
+import styled from "styled-components";
 
 function App() {
   const [items, setItems] = useState([
@@ -21,10 +22,17 @@ function App() {
   };
 
   return (
-    <div className="App">
+    <Container className="App">
       <Todos todos={items} markComplete={markComplete} />
-    </div>
+    </Container>
   );
 }
 
 export default App;
+
+const Container = styled.div`
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  align-items: center;
+`;

@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import styled from "styled-components";
 
 function TodoItem({ todo, markComplete }) {
   TodoItem.propTypes = {
@@ -7,22 +8,33 @@ function TodoItem({ todo, markComplete }) {
   };
 
   const getStyle = () => {
-    return {
-      background: "#f4f4f4",
-      padding: "10px",
-      borderBottom: "1px dotted #ccc",
-      textDecoration: todo.completed ? "line-through" : "none",
-    };
+    return { textDecoration: todo.completed ? "line-through" : "none" };
   };
 
   return (
-    <div style={getStyle()}>
-      <p>
-        <input type="checkbox" onChange={() => markComplete(todo.id)} />{" "}
+    <Wrap style={getStyle()}>
+      <Content>
+        <input type="checkbox" onChange={() => markComplete(todo.id)} />
         {todo.title}
-      </p>
-    </div>
+      </Content>
+    </Wrap>
   );
 }
 
 export default TodoItem;
+
+const Wrap = styled.div`
+  background: #103e31;
+  color: white;
+  font-size: 14px;
+  letter-spacing: 1.2px;
+  padding: 10px;
+
+  border-radius: 8px;
+  margin-bottom: 10px;
+`;
+const Content = styled.p`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+`;
